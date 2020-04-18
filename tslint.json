@@ -1,5 +1,5 @@
 {
-  "extends": "tslint:recommended",
+  "extends": ["tslint:recommended", "tslint-clean-code", "tslint-eslint-rules"],
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -84,9 +84,34 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+    "prettier": true,
+    "try-catch-first": true,
+    "max-func-args": 3,
+    "min-class-cohesion": 2,
+    "newspaper-order": true,
+    "no-flag-args": true,
+    "strict": true,
+    "no-feature-envy": true,
+    "no-map-without-usage": true,
+    "no-complex-conditionals": true,
+    "no-commented-out-code": true,
+    "no-constant-condition": true,
+    "no-control-regex": true,
+    "no-duplicate-case": true,
+    "no-empty-character-class": true,
+    "no-ex-assign": true,
+    "no-extra-boolean-cast": true,
+    "no-extra-semi": true,
+    "no-inner-declarations": true,
+    "no-invalid-regexp": true,
+    "no-irregular-whitespace": true,
+    "rxjs-collapse-imports": true,
+    "rxjs-pipeable-operators-only": true,
+    "rxjs-no-static-observable-methods": true,
+    "rxjs-proper-imports": true
   },
   "rulesDirectory": [
-    "codelyzer"
+    "codelyzer", "node_modules/rxjs-tslint"
   ]
 }
