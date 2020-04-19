@@ -9,6 +9,7 @@ import { FakeLogoComponent } from './components/fake-logo/fake-logo.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
 import { SearchComponent } from './components/search/search.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SearchComponent } from './components/search/search.component';
     CoursesComponent,
     CourseComponent,
     SearchComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     BrowserModule,
