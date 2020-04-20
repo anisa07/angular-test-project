@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FakeLogoComponent } from './fake-logo/fake-logo.component';
 import { HeaderComponent } from './header.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
-    FakeLogoComponent,
     HeaderComponent,
+    LogoComponent,
   ],
   exports: [
     HeaderComponent
