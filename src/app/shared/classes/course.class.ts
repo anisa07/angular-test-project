@@ -7,7 +7,7 @@ export default class Course implements CourseInterface {
   description: string;
   title: string;
 
-  constructor({id, duration, creationDate, description, title}) {
+  constructor({id, duration, creationDate, description, title}: CourseInterface) {
     this.id = id;
     this.duration = duration;
     this.creationDate = creationDate;
