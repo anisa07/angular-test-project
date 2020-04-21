@@ -10,6 +10,7 @@ import { LogoComponent } from './components/header/components/logo/logo.componen
 import { CourseComponent } from './components/courses-page/components/course/course.component';
 import { CourseSearchComponent } from './components/courses-page/components/course-search/course-search.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { CoursesListComponent } from './components/courses-page/components/courses-list/courses-list.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     CourseComponent,
     CourseSearchComponent,
     BreadcrumbsComponent,
+    CoursesListComponent,
   ],
   imports: [
     BrowserModule,
