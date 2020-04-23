@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faClock, faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
+import { faTrashAlt, faPencilAlt, faPlus, faSearch, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -27,8 +29,13 @@ import { CoursesListComponent } from './components/courses-page/components/cours
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private library: FaIconLibrary) {
+    library.addIcons(faClock, faCalendarAlt, faTrashAlt, faPencilAlt, faPlus, faSearch, faUser, faSignOutAlt);
+  }
+}

@@ -1,1 +1,28 @@
-<p>course works!</p>
+<div *ngIf="course" class="course">
+  <div class="content">
+    <div class="title">
+      <h3 class="text">{{course.title}}</h3>
+      <div class="date">
+        <p>
+          <fa-icon [icon]="['far', 'clock']"></fa-icon>
+          {{course.duration}}
+        </p>
+        <p>
+          <fa-icon [icon]="['far', 'calendar-alt']"></fa-icon>
+          {{course.creationDate.getDate()+'/'+(course.creationDate.getMonth() + 1)+'/'+course.creationDate.getFullYear()}}
+        </p>
+      </div>
+    </div>
+    <p class="description">{{course.description}}</p>
+  </div>
+  <div class="controls">
+    <button class="button default-button">
+      <fa-icon icon="pencil-alt"></fa-icon>
+      Edit
+    </button>
+    <button class="button sharp-button">
+      <fa-icon icon="trash-alt"></fa-icon>
+      Delete
+    </button>
+  </div>
+</div>

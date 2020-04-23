@@ -1,0 +1,12 @@
+@import "../variables";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  .page {
+    flex: 1;
+    background: radial-gradient($base-color, $dark-color);
+  }
+}

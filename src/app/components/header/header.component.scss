@@ -1,0 +1,32 @@
+@import "../../../variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $global-padding;
+  background: linear-gradient(to left, $dark-color, $base-color);
+
+  .user-button {
+    background: none;
+    color: $bright-color;
+    font-size: 20px;
+
+    .icon {
+      color: $add-color;
+      font-size: 24px;
+    }
+
+    .sign-out {
+      margin-left: 10px;
+    }
+  }
+
+  .user-button:active {
+    color: $add-color;
+
+    .icon {
+      color: $bright-color;
+    }
+  }
+}
