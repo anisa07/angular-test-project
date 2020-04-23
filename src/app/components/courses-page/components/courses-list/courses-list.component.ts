@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnChanges, OnDestroy,
+  OnInit,
+  SimpleChanges
+} from '@angular/core';
 import Course from '../../shared/classes/course.class';
 
+// tslint:disable-next-line:no-conflicting-lifecycle
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss']
 })
-export class CoursesListComponent {
+export class CoursesListComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked,
+  AfterViewInit, AfterViewChecked, OnDestroy {
   coursesList: Array<Course> = [
     {
       id: '1',
@@ -49,4 +61,49 @@ export class CoursesListComponent {
       title: 'Search Engine Optimization (SEO) Specialization',
     }
   ];
+
+  onDeleteCourse(id) {
+    console.log(`${id} will be deleted`);
+  }
+
+  handleLoadMore() {
+    console.log('Load More');
+  }
+
+  constructor() {
+    console.log('Constructor');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    console.log('OnChanges');
+  }
+
+  ngOnInit(): void {
+    console.log('OnInit');
+  }
+
+  ngDoCheck(): void {
+    console.log('DoCheck');
+  }
+
+  ngAfterContentInit() {
+    console.log('AfterContentInit');
+  }
+
+  ngAfterContentChecked() {
+    console.log('AfterContentChecked');
+  }
+
+  ngAfterViewInit() {
+    console.log('AfterViewInit');
+  }
+
+  ngAfterViewChecked() {
+    console.log('AfterViewChecked');
+  }
+
+  ngOnDestroy() {
+    console.log('Destroy');
+  }
 }

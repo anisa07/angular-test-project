@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./course-search.component.scss']
 })
 export class CourseSearchComponent {
+  searchLine = '';
+
+  handleSearch() {
+    console.log(this.searchLine);
+  }
 }

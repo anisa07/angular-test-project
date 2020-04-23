@@ -13,6 +13,7 @@ import { CourseComponent } from './components/courses-page/components/courses-li
 import { CourseSearchComponent } from './components/courses-page/components/course-search/course-search.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { CoursesListComponent } from './components/courses-page/components/courses-list/courses-list.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CoursesListComponent } from './components/courses-page/components/cours
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

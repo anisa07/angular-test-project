@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import CourseModel from '../../../../shared/models/course.interface';
 
 @Component({
@@ -8,4 +8,9 @@ import CourseModel from '../../../../shared/models/course.interface';
 })
 export class CourseComponent {
   @Input() course: CourseModel;
+  @Output() deleteCourse = new EventEmitter<string>();
+
+  delete(id: string) {
+    this.deleteCourse.emit(id);
+  }
 }
