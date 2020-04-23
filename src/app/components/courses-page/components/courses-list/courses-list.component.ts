@@ -5,19 +5,18 @@ import {
   AfterViewInit,
   Component,
   DoCheck,
-  OnChanges, OnDestroy,
+  OnDestroy,
   OnInit,
   SimpleChanges
 } from '@angular/core';
 import Course from '../../shared/classes/course.class';
 
-// tslint:disable-next-line:no-conflicting-lifecycle
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.scss']
 })
-export class CoursesListComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked,
+export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
   coursesList: Array<Course> = [
     {
@@ -74,13 +73,8 @@ export class CoursesListComponent implements OnInit, OnChanges, DoCheck, AfterCo
     console.log('Constructor');
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log('OnChanges');
-  }
-
   ngOnInit(): void {
-    console.log('OnInit');
+    console.log('OnInit List');
   }
 
   ngDoCheck(): void {
