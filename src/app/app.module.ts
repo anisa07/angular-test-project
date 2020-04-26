@@ -14,6 +14,7 @@ import { CourseSearchComponent } from './components/courses-page/components/cour
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { CoursesListComponent } from './components/courses-page/components/courses-list/courses-list.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     CourseSearchComponent,
     BreadcrumbsComponent,
     CoursesListComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

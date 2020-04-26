@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import CourseModel from '../../../../shared/models/course.interface';
+// @ts-ignore
+import CourseModel from '@courses/shared/models/course.interface';
 
 @Component({
   selector: 'app-course',
@@ -9,6 +10,7 @@ import CourseModel from '../../../../shared/models/course.interface';
 export class CourseComponent implements OnChanges, OnInit {
   @Input() course: CourseModel;
   @Output() deleteCourse = new EventEmitter<string>();
+  date: string;
 
   delete(id: string) {
     this.deleteCourse.emit(id);
@@ -20,6 +22,7 @@ export class CourseComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
+    this.date = `${this.course.creationDate.getDate()}/${this.course.creationDate.getMonth() + 1}/${this.course.creationDate.getFullYear()}`;
     console.log('OnInit Course');
   }
 }

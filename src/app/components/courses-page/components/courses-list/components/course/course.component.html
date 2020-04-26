@@ -1,4 +1,4 @@
-<div *ngIf="course" class="course">
+<div class="course">
   <div class="content">
     <div class="title">
       <h3 class="text">{{course.title}}</h3>
@@ -9,7 +9,7 @@
         </p>
         <p>
           <fa-icon [icon]="['far', 'calendar-alt']"></fa-icon>
-          {{course.creationDate.getDate()+'/'+(course.creationDate.getMonth() + 1)+'/'+course.creationDate.getFullYear()}}
+          {{date}}
         </p>
       </div>
     </div>
