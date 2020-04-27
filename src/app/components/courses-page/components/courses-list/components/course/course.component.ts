@@ -8,21 +8,22 @@ import CourseModel from '@courses/shared/models/course.interface';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnChanges, OnInit {
-  @Input() course: CourseModel;
-  @Output() deleteCourse = new EventEmitter<string>();
-  date: string;
+  @Input() private course: CourseModel;
+  @Output() private deleteCourse = new EventEmitter<string>();
+  private date: string;
 
-  delete(id: string) {
+  private delete(id: string) {
     this.deleteCourse.emit(id);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     console.log('OnChanges');
+    // tslint:disable-next-line:max-line-length
+    this.date = `${this.course.creationDate.getDate()}/${this.course.creationDate.getMonth() + 1}/${this.course.creationDate.getFullYear()}`;
   }
 
   ngOnInit(): void {
-    this.date = `${this.course.creationDate.getDate()}/${this.course.creationDate.getMonth() + 1}/${this.course.creationDate.getFullYear()}`;
     console.log('OnInit Course');
   }
 }

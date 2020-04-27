@@ -19,7 +19,7 @@ import { coursesList } from './courses-list.data';
 })
 export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
-  coursesList: Array<Course> = [];
+  private coursesList: Array<Course> = [];
 
   onDeleteCourse(id) {
     console.log(`${id} will be deleted`);
