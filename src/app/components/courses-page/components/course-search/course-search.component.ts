@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class CourseSearchComponent {
   private searchLine = '';
 
-  private handleSearch() {
+  private handleSearch(): void {
     console.log(this.searchLine);
   }
 }

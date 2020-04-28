@@ -12,7 +12,7 @@ export class CourseComponent implements OnChanges, OnInit {
   @Output() private deleteCourse = new EventEmitter<string>();
   private date: string;
 
-  private delete(id: string) {
+  private delete(id: string): void {
     this.deleteCourse.emit(id);
   }
 

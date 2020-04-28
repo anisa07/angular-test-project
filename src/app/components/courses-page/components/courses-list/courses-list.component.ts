@@ -21,11 +21,11 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
   AfterViewInit, AfterViewChecked, OnDestroy {
   private coursesList: Array<Course> = [];
 
-  onDeleteCourse(id) {
+  onDeleteCourse(id): void {
     console.log(`${id} will be deleted`);
   }
 
-  handleLoadMore() {
+  handleLoadMore(): void {
     console.log('Load More');
   }
 
@@ -42,27 +42,27 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
     console.log('DoCheck');
   }
 
-  ngAfterContentInit() {
+  ngAfterContentInit(): void {
     console.log('AfterContentInit');
   }
 
-  ngAfterContentChecked() {
+  ngAfterContentChecked(): void {
     console.log('AfterContentChecked');
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     console.log('AfterViewInit');
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewChecked(): void {
     console.log('AfterViewChecked');
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('Destroy');
   }
 
-  trackByFun(index, item) {
+  trackByFun(index, item): string {
     return `${index}-${item.id}`;
   }
 }

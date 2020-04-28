@@ -39,4 +39,4 @@ export const coursesList = [
       'in which you will apply your skills to a comprehensive SEO consulting task.',
     title: 'Search Engine Optimization (SEO) Specialization',
   }
-]
+];
