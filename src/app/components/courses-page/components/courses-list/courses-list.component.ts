@@ -19,13 +19,13 @@ import { coursesList } from './courses-list.data';
 })
 export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
-  private coursesList: Array<Course> = [];
+  public coursesList: Array<Course> = [];
 
-  onDeleteCourse(id): void {
+  public onDeleteCourse(id): void {
     console.log(`${id} will be deleted`);
   }
 
-  handleLoadMore(): void {
+  public handleLoadMore(): void {
     console.log('Load More');
   }
 
@@ -33,36 +33,36 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
     console.log('Constructor');
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.coursesList = coursesList;
     console.log('OnInit List');
   }
 
-  ngDoCheck(): void {
+  public ngDoCheck(): void {
     console.log('DoCheck');
   }
 
-  ngAfterContentInit(): void {
+  public ngAfterContentInit(): void {
     console.log('AfterContentInit');
   }
 
-  ngAfterContentChecked(): void {
+  public ngAfterContentChecked(): void {
     console.log('AfterContentChecked');
   }
 
-  ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     console.log('AfterViewInit');
   }
 
-  ngAfterViewChecked(): void {
+  public ngAfterViewChecked(): void {
     console.log('AfterViewChecked');
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     console.log('Destroy');
   }
 
-  trackByFun(index, item): string {
+  public trackByFun(index, item): string {
     return `${index}-${item.id}`;
   }
 }
