@@ -1,0 +1,27 @@
+@import "~variables.scss";
+
+.breadcrumbs {
+  background: $bright-color;
+  padding: $global-padding;
+  height: 30px;
+  display: flex;
+
+  .link {
+    display: flex;
+    align-items: center;
+    color: $base-color;
+    font-size: 16px;
+  }
+
+  .link:not(:last-child):after {
+    content: "/";
+    width: 10px;
+    margin-left: 5px;
+  }
+
+  .link:active {
+    font-size: 18px;
+    font-weight: bolder;
+    color: $special-color;
+  }
+}

@@ -1,0 +1,11 @@
+@import "~variables.scss";
+
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $special-color;
+  font-size: 36px;
+  height: 100px;
+  text-transform: capitalize;
+}

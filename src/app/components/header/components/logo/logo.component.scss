@@ -1,0 +1,17 @@
+@import "../../../../../variables";
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  .image {
+    width: 32px;
+    margin-right: 10px;
+  }
+
+  .label {
+    font-family: 'Courgette', cursive;
+    font-size: 32px;
+    color: $bright-color;
+  }
+}
