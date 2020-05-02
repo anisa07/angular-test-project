@@ -10,12 +10,16 @@ import {
 } from '@angular/core';
 // @ts-ignore
 import Course from '@courses/shared/classes/course.class';
+// @ts-ignore
+import { FilterCoursePipe } from '@pipes/filter-course.pipe';
+
 import { coursesList } from './courses-list.data';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  providers: [ FilterCoursePipe ]
 })
 export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
@@ -34,16 +38,16 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
     console.log('Load More');
   }
 
-  constructor() {
+  constructor(private filterCoursePipe: FilterCoursePipe) {
     console.log('Constructor');
   }
 
   public ngOnInit(): void {
-    this.coursesList = coursesList;
     console.log('OnInit List');
   }
 
   public ngDoCheck(): void {
+    this.coursesList = this.filterCoursePipe.transform(coursesList, this.searchedCourse);
     console.log('DoCheck');
   }
 
