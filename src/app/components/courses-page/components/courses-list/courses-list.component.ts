@@ -4,7 +4,7 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
-  DoCheck,
+  DoCheck, Input,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -20,6 +20,7 @@ import { coursesList } from './courses-list.data';
 export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
   public coursesList: Array<Course> = [];
+  @Input() public searchedCourse: string;
 
   public get noCourses(): boolean {
     return !this.coursesList.length;

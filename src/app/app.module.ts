@@ -16,6 +16,9 @@ import { CoursesListComponent } from '@courses/components/courses-list/courses-l
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BorderDirective } from './directives/border.directive';
+import { DurationPipe } from './pipes/duration.pipe';
+import { FilterCoursePipe } from './pipes/filter-course.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { BorderDirective } from './directives/border.directive';
     CoursesListComponent,
     NotFoundComponent,
     BorderDirective,
+    DurationPipe,
+    FilterCoursePipe,
+    OrderByPipe,
   ],
   imports: [
     BrowserModule,

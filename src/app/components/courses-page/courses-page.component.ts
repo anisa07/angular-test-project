@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent {
+  public searchedCourse: string;
+  public onSearchCourse(name: string): void {
+    this.searchedCourse = name;
+  }
 }

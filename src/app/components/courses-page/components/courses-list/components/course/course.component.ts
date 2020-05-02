@@ -20,10 +20,6 @@ export class CourseComponent implements OnChanges, OnInit {
     this.topRated = !this.topRated;
   }
 
-  public get date(): string {
-    return this.course.creationDate.toLocaleDateString();
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     console.log('OnChanges');

@@ -27,7 +27,7 @@ export const coursesList = [
   },
   {
     id: '3',
-    duration: 120,
+    duration: 110,
     creationDate: createDate(30),
     description: 'This Specialization will teach you to optimize website content for the best possible search engine ranking. ' +
       'You\'ll learn the theory behind Google search and other search engine algorithms; ' +
