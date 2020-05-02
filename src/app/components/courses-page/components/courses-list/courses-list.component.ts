@@ -21,6 +21,10 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
   AfterViewInit, AfterViewChecked, OnDestroy {
   public coursesList: Array<Course> = [];
 
+  public get noCourses(): boolean {
+    return !this.coursesList.length;
+  }
+
   public onDeleteCourse(id): void {
     console.log(`${id} will be deleted`);
   }

@@ -10,13 +10,18 @@ import CourseModel from '@courses/shared/models/course.interface';
 export class CourseComponent implements OnChanges, OnInit {
   @Input() public course: CourseModel;
   @Output() public deleteCourse = new EventEmitter<string>();
+  public topRated = false;
 
   public delete(id: string): void {
     this.deleteCourse.emit(id);
   }
 
+  public changeRate(): void {
+    this.topRated = !this.topRated;
+  }
+
   public get date(): string {
-    return `${this.course.creationDate.getDate()}/${this.course.creationDate.getMonth() + 1}/${this.course.creationDate.getFullYear()}`;
+    return this.course.creationDate.toLocaleDateString();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

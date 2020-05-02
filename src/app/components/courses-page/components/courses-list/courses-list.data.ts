@@ -1,8 +1,10 @@
+const createDate = (days: number) => new Date(Date.now() - (3600000 * 24 * days));
+
 export const coursesList = [
   {
     id: '1',
     duration: 60,
-    creationDate: new Date(),
+    creationDate: createDate(-5),
     description: 'This course aims to teach everyone the basics of programming computers using Python. ' +
       'We cover the basics of how one constructs a program from a series of simple instructions in Python.  ' +
       'The course has no pre-requisites and avoids all but the simplest mathematics. ' +
@@ -15,7 +17,7 @@ export const coursesList = [
   {
     id: '2',
     duration: 45,
-    creationDate: new Date(),
+    creationDate: createDate(12),
     description: 'On this course, you will hear directly from our world-class experts about the theory behind the analyses ' +
       'of COVID-19 and its spread, while learning how to interpret new information using core principles ' +
       'of public health, epidemiology, medicine, health economics, and social science. ' +
@@ -26,7 +28,7 @@ export const coursesList = [
   {
     id: '3',
     duration: 120,
-    creationDate: new Date(),
+    creationDate: createDate(30),
     description: 'This Specialization will teach you to optimize website content for the best possible search engine ranking. ' +
       'You\'ll learn the theory behind Google search and other search engine algorithms; ' +
       'you\'ll also build practical, real-world skills that you can apply to a career in digital marketing ' +
