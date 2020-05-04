@@ -6,11 +6,6 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./course-search.component.scss']
 })
 export class CourseSearchComponent {
-  public searchLine = '';
+  public searchQuery = '';
   @Output() public searchCourse = new EventEmitter<string>();
-
-  private handleSearch(): void {
-    const value = this.searchLine ? this.searchLine.trim().toLowerCase() : '';
-    this.searchCourse.emit(value);
-  }
 }

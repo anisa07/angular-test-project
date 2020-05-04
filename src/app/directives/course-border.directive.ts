@@ -1,10 +1,12 @@
 import {Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
 
+const MILLISECONDS_IN_14_DAYS = 3600000 * 24 * 14;
+
 @Directive({
-  selector: '[appBorder]'
+  selector: '[appCourseBorder]'
 })
-export class BorderDirective implements OnChanges {
-  @Input('appBorder') public creationDate: Date;
+export class CourseBorderDirective implements OnChanges {
+  @Input('appCourseBorder') public creationDate: Date;
 
   constructor(private element: ElementRef) {
   }
@@ -12,8 +14,7 @@ export class BorderDirective implements OnChanges {
   public ngOnChanges(): void {
     const courseDate = this.creationDate.getTime();
     const currentDate = Date.now();
-    const fourteenDays = 3600000 * 24 * 14;
-    if (courseDate < currentDate && courseDate >= currentDate - fourteenDays) {
+    if (courseDate < currentDate && courseDate >= currentDate - MILLISECONDS_IN_14_DAYS) {
       this.element.nativeElement.style.boxShadow = '10px 10px 10px #32cd32';
       this.element.nativeElement.style.border = '2px solid #7cfc00';
     }

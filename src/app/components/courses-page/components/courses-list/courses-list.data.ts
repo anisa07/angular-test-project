@@ -13,6 +13,7 @@ export const coursesList = [
       'Once a student completes this course, they will be ready to take more advanced programming courses. ' +
       'This course covers Python 3.',
     title: 'Python for Everybody',
+    topRated: true
   },
   {
     id: '2',
@@ -24,6 +25,7 @@ export const coursesList = [
       'You will be able to watch regular situation reports about the state of the epidemic, provided by the researchers ' +
       'of J-IDEA and its director Professor Neil Ferguson. \n',
     title: 'Science Matters: Let\'s Talk About COVID-19',
+    topRated: false
   },
   {
     id: '3',
@@ -40,5 +42,6 @@ export const coursesList = [
       'in a hands-on Capstone Project, ' +
       'in which you will apply your skills to a comprehensive SEO consulting task.',
     title: 'Search Engine Optimization (SEO) Specialization',
+    topRated: true
   }
 ];

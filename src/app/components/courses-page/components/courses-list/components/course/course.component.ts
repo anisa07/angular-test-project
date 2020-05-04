@@ -10,14 +10,9 @@ import CourseModel from '@courses/shared/models/course.interface';
 export class CourseComponent implements OnChanges, OnInit {
   @Input() public course: CourseModel;
   @Output() public deleteCourse = new EventEmitter<string>();
-  public topRated = false;
 
   public delete(id: string): void {
     this.deleteCourse.emit(id);
-  }
-
-  public changeRate(): void {
-    this.topRated = !this.topRated;
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

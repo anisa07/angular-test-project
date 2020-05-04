@@ -15,10 +15,10 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { CoursesListComponent } from '@courses/components/courses-list/courses-list.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { BorderDirective } from './directives/border.directive';
-import { DurationPipe } from './pipes/duration.pipe';
-import { FilterCoursePipe } from './pipes/filter-course.pipe';
-import { OrderByPipe } from './pipes/order-by.pipe';
+import { CourseBorderDirective } from './directives/course-border.directive';
+import { ConvertCourseDurationPipe } from '@pipes/convert-course-duration.pipe';
+import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
+import { OrderCoursesByDatePipe } from '@pipes/order-courses-by-date.pipe';
 
 @NgModule({
   declarations: [
@@ -32,10 +32,10 @@ import { OrderByPipe } from './pipes/order-by.pipe';
     BreadcrumbsComponent,
     CoursesListComponent,
     NotFoundComponent,
-    BorderDirective,
-    DurationPipe,
-    FilterCoursePipe,
-    OrderByPipe,
+    CourseBorderDirective,
+    ConvertCourseDurationPipe,
+    FilterCoursesByQueryPipe,
+    OrderCoursesByDatePipe,
   ],
   imports: [
     BrowserModule,
