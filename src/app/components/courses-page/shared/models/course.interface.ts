@@ -4,4 +4,5 @@ export default interface CourseModel {
   duration: number;
   description: string;
   title: string;
+  topRated: boolean;
 }

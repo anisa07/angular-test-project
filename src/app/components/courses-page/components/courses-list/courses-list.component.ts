@@ -4,22 +4,27 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
-  DoCheck,
+  Input, OnChanges,
   OnDestroy,
   OnInit,
 } from '@angular/core';
 // @ts-ignore
 import Course from '@courses/shared/classes/course.class';
+// @ts-ignore
+import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
+
 import { coursesList } from './courses-list.data';
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
-  styleUrls: ['./courses-list.component.scss']
+  styleUrls: ['./courses-list.component.scss'],
+  providers: [ FilterCoursesByQueryPipe ]
 })
-export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, AfterContentChecked,
+export class CoursesListComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked,
   AfterViewInit, AfterViewChecked, OnDestroy {
   public coursesList: Array<Course> = [];
+  @Input() public searchedCourse: string;
 
   public onDeleteCourse(id): void {
     console.log(`${id} will be deleted`);
@@ -29,17 +34,17 @@ export class CoursesListComponent implements OnInit, DoCheck, AfterContentInit, 
     console.log('Load More');
   }
 
-  constructor() {
+  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe) {
     console.log('Constructor');
   }
 
   public ngOnInit(): void {
-    this.coursesList = coursesList;
     console.log('OnInit List');
   }
 
-  public ngDoCheck(): void {
-    console.log('DoCheck');
+  public ngOnChanges(): void {
+    this.coursesList = this.filterCoursesByQueryPipe.transform(coursesList, this.searchedCourse);
+    console.log('OnChanges');
   }
 
   public ngAfterContentInit(): void {

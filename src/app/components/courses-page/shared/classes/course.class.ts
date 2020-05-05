@@ -6,12 +6,14 @@ export default class Course implements CourseModel {
   public creationDate: Date;
   public description: string;
   public title: string;
+  public topRated: boolean;
 
-  constructor({id, duration, creationDate, description, title}: CourseModel) {
+  constructor({id, duration, creationDate, description, title, topRated}: CourseModel) {
     this.id = id;
     this.duration = duration;
     this.creationDate = creationDate;
     this.description = description;
     this.title = title;
+    this.topRated = topRated;
   }
 }

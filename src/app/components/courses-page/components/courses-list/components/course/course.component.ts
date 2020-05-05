@@ -15,10 +15,6 @@ export class CourseComponent implements OnChanges, OnInit {
     this.deleteCourse.emit(id);
   }
 
-  public get date(): string {
-    return `${this.course.creationDate.getDate()}/${this.course.creationDate.getMonth() + 1}/${this.course.creationDate.getFullYear()}`;
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
     console.log('OnChanges');
