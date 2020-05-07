@@ -1,19 +1,13 @@
 import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
   Component,
-  Input, OnChanges,
-  OnDestroy,
-  OnInit,
+  Input,
+  OnChanges
 } from '@angular/core';
 // @ts-ignore
 import Course from '@courses/shared/classes/course.class';
 // @ts-ignore
 import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
-
-import { coursesList } from './courses-list.data';
+import {CoursesService} from '@app/services/courses.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -21,50 +15,31 @@ import { coursesList } from './courses-list.data';
   styleUrls: ['./courses-list.component.scss'],
   providers: [ FilterCoursesByQueryPipe ]
 })
-export class CoursesListComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked,
-  AfterViewInit, AfterViewChecked, OnDestroy {
+export class CoursesListComponent implements OnChanges {
   public coursesList: Array<Course> = [];
   @Input() public searchedCourse: string;
 
-  public onDeleteCourse(id): void {
-    console.log(`${id} will be deleted`);
+  private getCourseList(): void {
+    this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchedCourse);
+  }
+
+  public onDeleteCourse(id: string): void {
+    const delCourse = confirm(`Do you want to delete this course?`);
+    if (delCourse) {
+      this.coursesService.deleteCourse(id);
+      this.getCourseList();
+    }
   }
 
   public handleLoadMore(): void {
     console.log('Load More');
   }
 
-  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe) {
-    console.log('Constructor');
-  }
-
-  public ngOnInit(): void {
-    console.log('OnInit List');
-  }
+  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe, private coursesService: CoursesService) {}
 
   public ngOnChanges(): void {
-    this.coursesList = this.filterCoursesByQueryPipe.transform(coursesList, this.searchedCourse);
+    this.getCourseList();
     console.log('OnChanges');
-  }
-
-  public ngAfterContentInit(): void {
-    console.log('AfterContentInit');
-  }
-
-  public ngAfterContentChecked(): void {
-    console.log('AfterContentChecked');
-  }
-
-  public ngAfterViewInit(): void {
-    console.log('AfterViewInit');
-  }
-
-  public ngAfterViewChecked(): void {
-    console.log('AfterViewChecked');
-  }
-
-  public ngOnDestroy(): void {
-    console.log('Destroy');
   }
 
   public trackByFun(index, item): string {

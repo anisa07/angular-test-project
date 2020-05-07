@@ -19,6 +19,8 @@ import { CourseBorderDirective } from './directives/course-border.directive';
 import { ConvertCourseDurationPipe } from '@pipes/convert-course-duration.pipe';
 import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
 import { OrderCoursesByDatePipe } from '@pipes/order-courses-by-date.pipe';
+import { CoursesService } from './services/courses.service';
+import { AuthorizationService } from './services/authorization.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { OrderCoursesByDatePipe } from '@pipes/order-courses-by-date.pipe';
     FontAwesomeModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [CoursesService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
