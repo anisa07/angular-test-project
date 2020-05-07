@@ -21,6 +21,7 @@ import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
 import { OrderCoursesByDatePipe } from '@pipes/order-courses-by-date.pipe';
 import { CoursesService } from './services/courses.service';
 import { AuthorizationService } from './services/authorization.service';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthorizationService } from './services/authorization.service';
     ConvertCourseDurationPipe,
     FilterCoursesByQueryPipe,
     OrderCoursesByDatePipe,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,

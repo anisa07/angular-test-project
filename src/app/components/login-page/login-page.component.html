@@ -1,0 +1,12 @@
+<div class="login">
+  <h3>Login</h3>
+  <label>
+    User
+    <input type="text" [(ngModel)]="user" />
+  </label>
+  <label>
+    Password
+    <input type="password" [(ngModel)]="password" />
+  </label>
+  <input type="submit" value="Login" class="button" (click)="submit()" />
+</div>
