@@ -1,0 +1,21 @@
+@import "~variables.scss";
+
+.delete-course {
+  h3 {
+    font-size: 20px;
+  }
+
+  button {
+    margin-right: 10px;
+    color: $bright-color2;
+    background: $add-color;
+  }
+
+  button:first-of-type {
+    background: $special-color;
+  }
+
+  button:active {
+    background: $base-color;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CoursesService} from '@app/services/courses.service';
 
 @Component({
   selector: 'app-courses-page',
@@ -7,7 +8,27 @@ import { Component } from '@angular/core';
 })
 export class CoursesPageComponent {
   public searchedCourseTitle: string;
+  public showDeleteModal: boolean;
+  private courseId: string;
+
+  constructor(private coursesService: CoursesService) {
+  }
+
   public onSearchCourseByTitle(name: string): void {
     this.searchedCourseTitle = name;
+  }
+
+  public onShowDeleteCourseModal(id: string): void {
+    this.courseId = id;
+    this.toggleModal();
+  }
+
+  public deleteCourseById(): void {
+    this.coursesService.deleteCourse(this.courseId);
+    this.toggleModal();
+  }
+
+  private toggleModal(): void {
+    this.showDeleteModal = !this.showDeleteModal;
   }
 }

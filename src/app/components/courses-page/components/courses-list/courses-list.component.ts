@@ -1,12 +1,14 @@
 import {
   Component,
+  DoCheck,
+  EventEmitter,
   Input,
-  OnChanges
+  Output
 } from '@angular/core';
 // @ts-ignore
 import Course from '@courses/shared/models/course.class';
 // @ts-ignore
-import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
+import { FilterCoursesByQueryPipe} from '@pipes/filter-courses-by-query.pipe';
 import { CoursesService} from '@app/services/courses.service';
 
 @Component({
@@ -15,23 +17,23 @@ import { CoursesService} from '@app/services/courses.service';
   styleUrls: ['./courses-list.component.scss'],
   providers: [ FilterCoursesByQueryPipe ]
 })
-export class CoursesListComponent implements OnChanges {
+export class CoursesListComponent implements DoCheck {
   public coursesList: Array<Course> = [];
   @Input() public searchedCourseTitle: string;
+  @Output() public deleteCourse = new EventEmitter<string>();
 
-  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe, private coursesService: CoursesService) { }
+  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe,
+              private coursesService: CoursesService
+  ) {
 
-  public ngOnChanges(): void {
-    this.getCourseList();
-    console.log('OnChanges');
+  }
+
+  public ngDoCheck(): void {
+   this.updateCourseList();
   }
 
   public shouldDeleteCourse(id: string): void {
-    const delCourse = confirm(`Do you want to delete this course?`);
-    if (delCourse) {
-      this.coursesService.deleteCourse(id);
-      this.getCourseList();
-    }
+    this.deleteCourse.emit(id);
   }
 
   public handleLoadMore(): void {
@@ -42,7 +44,7 @@ export class CoursesListComponent implements OnChanges {
     return `${index}-${item.id}`;
   }
 
-  private getCourseList(): void {
+  private updateCourseList(): void {
     this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchedCourseTitle);
   }
 }

@@ -21,7 +21,9 @@ import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
 import { OrderCoursesByDatePipe } from '@pipes/order-courses-by-date.pipe';
 import { CoursesService } from './services/courses.service';
 import { AuthorizationService } from './services/authorization.service';
-import { LoginPageComponent } from './components/login-page/login-page.component';
+import { LoginPageComponent } from '@login/login-page.component';
+import { ModalComponent } from '@courses/components/modal/modal.component';
+import { DeleteCourseModalContentComponent } from '@courses/components/delete-course-modal-content/delete-course-modal-content.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     FilterCoursesByQueryPipe,
     OrderCoursesByDatePipe,
     LoginPageComponent,
+    ModalComponent,
+    DeleteCourseModalContentComponent,
   ],
   imports: [
     BrowserModule,

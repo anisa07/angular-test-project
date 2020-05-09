@@ -4,6 +4,7 @@
   padding: 20px $global-padding;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .add-button {
     align-self: flex-end;
