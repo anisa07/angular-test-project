@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
+import UserModel from '@login/shared/models/user.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  private key = '__save_fake_user_and_token';
+  private authKey = '__save_fake_user_and_token';
 
-  public login(credentials): void {
-    localStorage.setItem(this.key, JSON.stringify(credentials));
+  public login(credentials: UserModel): void {
+    localStorage.setItem(this.authKey, JSON.stringify({
+      userName: credentials.userName,
+      token: 'token'
+    }));
   }
 
   public logout(): void {
-    localStorage.removeItem(this.key);
+    localStorage.removeItem(this.authKey);
   }
 
   public isAuthenticated(): boolean {
-    const authInfo = localStorage.getItem(this.key);
+    const authInfo = localStorage.getItem(this.authKey);
     return authInfo && JSON.parse(authInfo).token;
   }
 
   public getUserInfo(): string {
-    const authInfo = localStorage.getItem(this.key);
-    return authInfo && JSON.parse(authInfo).user;
+    const authInfo = localStorage.getItem(this.authKey);
+    return authInfo && JSON.parse(authInfo).userName;
   }
 }

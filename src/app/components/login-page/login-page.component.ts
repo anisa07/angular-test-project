@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from '@app/services/authorization.service';
+import { Router} from '@angular/router';
+import UserModel from './shared/models/user.class';
 
 @Component({
   selector: 'app-login-page',
@@ -7,14 +9,18 @@ import { AuthorizationService } from '@app/services/authorization.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  public user: string;
-  public password: string;
+  public credentials: UserModel = {
+    userName: '',
+    password: ''
+  };
 
-  constructor(private authService: AuthorizationService) {
+  constructor(private authService: AuthorizationService, private router: Router) {
   }
 
   public submit(): void {
-    console.log('Fake Login');
-    this.authService.login({user: this.user, token: 'token'});
+    this.authService.login(this.credentials);
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/courses']);
+    }
   }
 }

@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 // @ts-ignore
-import CourseModel from '@courses/shared/models/course.interface';
+import CourseModel from '@courses/shared/interfaces/course.interface';
 
 @Component({
   selector: 'app-course',

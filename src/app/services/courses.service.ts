@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { coursesList } from '../data/courses-list.data';
-import Course from '@courses/shared/classes/course.class';
+import Course from '@courses/shared/models/course.class';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,10 @@ export class CoursesService {
   private coursesList: Array<Course> = coursesList;
 
   public getCourses(): Array<Course> {
-    return this.coursesList;
+    return [...this.coursesList];
   }
 
-  public createCourse(course: Course): void {
+  public addCourse(course: Course): void {
     this.coursesList.push(course);
   }
 

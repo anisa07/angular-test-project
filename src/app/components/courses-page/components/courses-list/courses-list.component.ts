@@ -4,10 +4,10 @@ import {
   OnChanges
 } from '@angular/core';
 // @ts-ignore
-import Course from '@courses/shared/classes/course.class';
+import Course from '@courses/shared/models/course.class';
 // @ts-ignore
 import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
-import {CoursesService} from '@app/services/courses.service';
+import { CoursesService} from '@app/services/courses.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -17,13 +17,16 @@ import {CoursesService} from '@app/services/courses.service';
 })
 export class CoursesListComponent implements OnChanges {
   public coursesList: Array<Course> = [];
-  @Input() public searchedCourse: string;
+  @Input() public searchedCourseTitle: string;
 
-  private getCourseList(): void {
-    this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchedCourse);
+  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe, private coursesService: CoursesService) { }
+
+  public ngOnChanges(): void {
+    this.getCourseList();
+    console.log('OnChanges');
   }
 
-  public onDeleteCourse(id: string): void {
+  public shouldDeleteCourse(id: string): void {
     const delCourse = confirm(`Do you want to delete this course?`);
     if (delCourse) {
       this.coursesService.deleteCourse(id);
@@ -35,14 +38,11 @@ export class CoursesListComponent implements OnChanges {
     console.log('Load More');
   }
 
-  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe, private coursesService: CoursesService) {}
-
-  public ngOnChanges(): void {
-    this.getCourseList();
-    console.log('OnChanges');
-  }
-
   public trackByFun(index, item): string {
     return `${index}-${item.id}`;
+  }
+
+  private getCourseList(): void {
+    this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchedCourseTitle);
   }
 }

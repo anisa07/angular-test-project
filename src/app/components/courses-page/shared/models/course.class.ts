@@ -1,6 +1,6 @@
-import CourseModel from '../models/course.interface';
+import CourseInterface from '../interfaces/course.interface';
 
-export default class Course implements CourseModel {
+export default class CourseModel implements CourseInterface {
   public id: string;
   public duration: number;
   public creationDate: Date;
@@ -8,7 +8,7 @@ export default class Course implements CourseModel {
   public title: string;
   public topRated: boolean;
 
-  constructor({id, duration, creationDate, description, title, topRated}: CourseModel) {
+  constructor({ id, duration, creationDate, description, title, topRated}: CourseInterface) {
     this.id = id;
     this.duration = duration;
     this.creationDate = creationDate;
