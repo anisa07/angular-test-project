@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-// @ts-ignore
 import CourseInterface from '@courses/shared/interfaces/course.interface';
 
 @Component({

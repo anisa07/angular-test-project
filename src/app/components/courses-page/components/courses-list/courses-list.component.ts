@@ -5,9 +5,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-// @ts-ignore
-import Course from '@courses/shared/models/course.class';
-// @ts-ignore
+import CourseInterface from '@courses/shared/interfaces/course.interface';
 import { FilterCoursesByQueryPipe} from '@pipes/filter-courses-by-query.pipe';
 import { CoursesService} from '@app/services/courses.service';
 
@@ -18,8 +16,8 @@ import { CoursesService} from '@app/services/courses.service';
   providers: [ FilterCoursesByQueryPipe ]
 })
 export class CoursesListComponent implements DoCheck {
-  public coursesList: Array<Course> = [];
-  @Input() public searchedCourseTitle: string;
+  public coursesList: Array<CourseInterface> = [];
+  @Input() public searchQuery: string;
   @Output() public deleteCourse = new EventEmitter<string>();
 
   constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe,
@@ -32,7 +30,7 @@ export class CoursesListComponent implements DoCheck {
    this.updateCourseList();
   }
 
-  public shouldDeleteCourse(id: string): void {
+  public onDeleteCourse(id: string): void {
     this.deleteCourse.emit(id);
   }
 
@@ -45,6 +43,6 @@ export class CoursesListComponent implements DoCheck {
   }
 
   private updateCourseList(): void {
-    this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchedCourseTitle);
+    this.coursesList = this.filterCoursesByQueryPipe.transform(this.coursesService.getCourses(), this.searchQuery);
   }
 }

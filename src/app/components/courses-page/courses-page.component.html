@@ -1,4 +1,4 @@
-<app-course-search (searchCourseByTitle)="onSearchCourseByTitle($event)"></app-course-search>
+<app-course-search (searchCourseByQuery)="onSearchCourseByTitle($event)"></app-course-search>
 <div class="courses-container">
   <app-modal *ngIf="showDeleteModal">
     <app-delete-course-modal-content
@@ -12,7 +12,7 @@
     Add Course
   </button>
   <app-courses-list
-    [searchedCourseTitle]="searchedCourseTitle"
+    [searchQuery]="searchedCourseQuery"
     (deleteCourse)="onShowDeleteCourseModal($event)">
   </app-courses-list>
 </div>

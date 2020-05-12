@@ -7,7 +7,7 @@ import { CoursesService} from '@app/services/courses.service';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent {
-  public searchedCourseTitle: string;
+  public searchedCourseQuery: string;
   public showDeleteModal: boolean;
   private courseId: string;
 
@@ -15,7 +15,7 @@ export class CoursesPageComponent {
   }
 
   public onSearchCourseByTitle(name: string): void {
-    this.searchedCourseTitle = name;
+    this.searchedCourseQuery = name;
   }
 
   public onShowDeleteCourseModal(id: string): void {
