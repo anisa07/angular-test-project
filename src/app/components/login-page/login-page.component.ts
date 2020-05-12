@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthorizationService } from '@app/services/authorization.service';
 import { Router} from '@angular/router';
-import UserModel from './shared/models/user.class';
+import UserInterface from './shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-login-page',
@@ -9,7 +9,7 @@ import UserModel from './shared/models/user.class';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  public credentials: UserModel = {
+  public credentials: UserInterface = {
     userName: '',
     password: ''
   };

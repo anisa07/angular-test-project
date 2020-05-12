@@ -1,6 +1,6 @@
 <main class="main">
   <app-header></app-header>
-  <app-breadcrumbs class="breadcrumbs" *ngIf="authService.isAuthenticated()"></app-breadcrumbs>
+  <app-breadcrumbs class="breadcrumbs" *ngIf="showBreadcrumbs"></app-breadcrumbs>
   <div class="page">
     <router-outlet></router-outlet>
   </div>

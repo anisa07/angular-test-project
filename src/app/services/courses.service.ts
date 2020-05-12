@@ -1,32 +1,29 @@
 import { Injectable } from '@angular/core';
 import { coursesList } from '../data/courses-list.data';
-import Course from '@courses/shared/models/course.class';
+import CourseInterface from '@courses/shared/interfaces/course.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CoursesService {
-  private coursesList: Array<Course> = coursesList;
+  private coursesList: Array<CourseInterface> = coursesList;
 
-  public getCourses(): Array<Course> {
+  public getCourses(): Array<CourseInterface> {
     return [...this.coursesList];
   }
 
-  public addCourse(course: Course): void {
+  public addCourse(course: CourseInterface): void {
     this.coursesList.push(course);
   }
 
-  public getCourseById(id: string): Course {
+  public getCourseById(id: string): CourseInterface {
     return this.coursesList.find(item => item.id === id);
   }
 
-  public updateCourse(course: Course): void {
-    this.coursesList.forEach(item => {
-      if (item.id === course.id) {
-        item = course;
-      }
-    });
+  public updateCourse(updatedCourse: CourseInterface): void {
+    this.deleteCourse(updatedCourse.id);
+    this.addCourse(updatedCourse);
   }
 
   public deleteCourse(id: string): void {

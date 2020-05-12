@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 // @ts-ignore
-import CourseModel from '@courses/shared/interfaces/course.interface';
+import CourseInterface from '@courses/shared/interfaces/course.interface';
 
 @Component({
   selector: 'app-course',
@@ -8,7 +8,7 @@ import CourseModel from '@courses/shared/interfaces/course.interface';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnChanges, OnInit {
-  @Input() public course: CourseModel;
+  @Input() public course: CourseInterface;
   @Output() public deleteCourse = new EventEmitter<string>();
 
   public delete(id: string): void {
