@@ -7,18 +7,18 @@ import { CoursesService} from '@app/services/courses.service';
   styleUrls: ['./courses-page.component.scss']
 })
 export class CoursesPageComponent {
-  public searchedCourseQuery: string;
+  public searchQuery: string;
   public showDeleteModal: boolean;
   private courseId: string;
 
   constructor(private coursesService: CoursesService) {
   }
 
-  public onSearchCourseByTitle(name: string): void {
-    this.searchedCourseQuery = name;
+  public onSearchCourseByQuery(query: string): void {
+    this.searchQuery = query;
   }
 
-  public onShowDeleteCourseModal(id: string): void {
+  public showDeleteCourseModal(id: string): void {
     this.courseId = id;
     this.toggleModal();
   }
