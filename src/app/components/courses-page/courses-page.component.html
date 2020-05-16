@@ -12,6 +12,7 @@
     Add Course
   </button>
   <app-courses-list
+    [coursesList]="coursesList"
     [searchQuery]="searchQuery"
     (deleteCourse)="showDeleteCourseModal($event)">
   </app-courses-list>

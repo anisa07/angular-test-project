@@ -19,7 +19,7 @@ export class LoginPageComponent {
 
   public submit(): void {
     this.authService.login(this.credentials);
-    if (this.authService.isAuthenticated()) {
+    if (this.authService.isAuthenticated) {
       this.router.navigate(['/courses']);
     }
   }
