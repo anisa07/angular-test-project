@@ -1,8 +1,19 @@
-<app-course-search (searchCourse)="onSearchCourse($event)"></app-course-search>
+<app-course-search (searchCourseByQuery)="onSearchCourseByQuery($event)"></app-course-search>
 <div class="courses-container">
+  <app-modal *ngIf="showDeleteModal">
+    <app-delete-course-modal-content
+      *ngIf="showDeleteModal"
+      (deleteCourse)="deleteCourseById()"
+      (cancelDeleteCourse)="toggleModal()">
+    </app-delete-course-modal-content>
+  </app-modal>
   <button class="add-button sharp-button">
     <fa-icon icon="plus"></fa-icon>
     Add Course
   </button>
-  <app-courses-list [searchedCourse]="searchedCourse"></app-courses-list>
+  <app-courses-list
+    [coursesList]="coursesList"
+    [searchQuery]="searchQuery"
+    (deleteCourse)="showDeleteCourseModal($event)">
+  </app-courses-list>
 </div>

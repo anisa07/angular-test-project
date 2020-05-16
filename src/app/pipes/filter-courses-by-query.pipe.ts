@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import Course from '@courses/shared/classes/course.class';
+import CourseInterface from '@courses/shared/interfaces/course.interface';
 
 @Pipe({
   name: 'filterCoursesByQuery'
 })
 export class FilterCoursesByQueryPipe implements PipeTransform {
 
-  public transform(value: Array<Course>, searchQuery: string): Array<Course> {
+  public transform(value: Array<CourseInterface>, searchQuery: string): Array<CourseInterface> {
     if (!searchQuery) {
       return value;
     }

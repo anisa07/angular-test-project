@@ -1,19 +1,11 @@
 import {
-  AfterContentChecked,
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
   Component,
-  Input, OnChanges,
-  OnDestroy,
-  OnInit,
+  EventEmitter,
+  Input,
+  Output,
 } from '@angular/core';
-// @ts-ignore
-import Course from '@courses/shared/classes/course.class';
-// @ts-ignore
-import { FilterCoursesByQueryPipe } from '@pipes/filter-courses-by-query.pipe';
-
-import { coursesList } from './courses-list.data';
+import CourseInterface from '@courses/shared/interfaces/course.interface';
+import { FilterCoursesByQueryPipe} from '@pipes/filter-courses-by-query.pipe';
 
 @Component({
   selector: 'app-courses-list',
@@ -21,53 +13,26 @@ import { coursesList } from './courses-list.data';
   styleUrls: ['./courses-list.component.scss'],
   providers: [ FilterCoursesByQueryPipe ]
 })
-export class CoursesListComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked,
-  AfterViewInit, AfterViewChecked, OnDestroy {
-  public coursesList: Array<Course> = [];
-  @Input() public searchedCourse: string;
+export class CoursesListComponent {
+  @Input() public coursesList: Array<CourseInterface> = [];
+  @Input() public searchQuery: string;
+  @Output() public deleteCourse = new EventEmitter<string>();
 
-  public onDeleteCourse(id): void {
-    console.log(`${id} will be deleted`);
+  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe) { }
+
+  public onDeleteCourse(id: string): void {
+    this.deleteCourse.emit(id);
   }
 
   public handleLoadMore(): void {
     console.log('Load More');
   }
 
-  constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe) {
-    console.log('Constructor');
-  }
-
-  public ngOnInit(): void {
-    console.log('OnInit List');
-  }
-
-  public ngOnChanges(): void {
-    this.coursesList = this.filterCoursesByQueryPipe.transform(coursesList, this.searchedCourse);
-    console.log('OnChanges');
-  }
-
-  public ngAfterContentInit(): void {
-    console.log('AfterContentInit');
-  }
-
-  public ngAfterContentChecked(): void {
-    console.log('AfterContentChecked');
-  }
-
-  public ngAfterViewInit(): void {
-    console.log('AfterViewInit');
-  }
-
-  public ngAfterViewChecked(): void {
-    console.log('AfterViewChecked');
-  }
-
-  public ngOnDestroy(): void {
-    console.log('Destroy');
-  }
-
   public trackByFun(index, item): string {
     return `${index}-${item.id}`;
+  }
+
+  public get filteredCoursesList(): Array<CourseInterface> {
+    return  this.filterCoursesByQueryPipe.transform(this.coursesList, this.searchQuery);
   }
 }

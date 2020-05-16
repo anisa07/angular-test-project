@@ -1,5 +1,5 @@
 <div class="search">
   <fa-icon class="icon" icon="search"></fa-icon>
   <input class="input" type="search" placeholder="Text to Search" [(ngModel)]="searchQuery" />
-  <button class="button default-button" (click)="this.searchCourse.emit(this.searchQuery)">Search</button>
+  <button class="button default-button" (click)="searchCourseByQuery.emit(searchQuery)">Search</button>
 </div>
