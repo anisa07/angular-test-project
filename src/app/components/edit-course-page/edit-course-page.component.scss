@@ -1,0 +1,21 @@
+.edit {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+
+    textarea {
+      height: 150px;
+    }
+
+    margin: 10px auto 5px;
+  }
+
+  button {
+    width: 100px;
+    margin: 10px auto 5px;
+  }
+}

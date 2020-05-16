@@ -35,8 +35,8 @@ export class AuthorizationService {
     this.setAuthState(false);
   }
 
-  public getUserInfo(): string {
+  public getUserInfo(): UserInterface {
     const authInfo = sessionStorage.getItem(this.authKey);
-    return authInfo && JSON.parse(authInfo).userName;
+    return authInfo && JSON.parse(authInfo);
   }
 }

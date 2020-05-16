@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   public showLogout = false;
+  public userName: string;
   private authSubscription: Subscription;
 
   constructor(private authService: AuthorizationService, private router: Router) { }
@@ -22,6 +23,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.authSubscription = this.authService.getAuthState().subscribe((authState) => {
       this.showLogout = authState;
+      if (authState) {
+        this.userName = this.authService.getUserInfo().userName;
+      }
     });
   }
 

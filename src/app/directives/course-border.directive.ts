@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 
 const MILLISECONDS_IN_14_DAYS = 3600000 * 24 * 14;
 

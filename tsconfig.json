@@ -13,6 +13,7 @@
     "target": "es2015",
     "paths": {
       "@courses/*": ["app/components/courses-page/*"],
+      "@breadcrumbs/*": ["app/components/breadcrumbs/*"],
       "@login/*": ["app/components/login-page/*"],
       "@pipes/*": ["app/pipes/*"],
       "@app/*": ["app/*"]

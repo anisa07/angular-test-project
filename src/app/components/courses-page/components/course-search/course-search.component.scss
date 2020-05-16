@@ -16,11 +16,8 @@
   .input {
     padding: 10px 10px 10px 40px;
     width: 300px;
-    font-size: 18px;
-    color: $dark-color;
-    border-bottom-left-radius: 2px;
-    border-top-left-radius: 2px;
-    height: 45px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .button {

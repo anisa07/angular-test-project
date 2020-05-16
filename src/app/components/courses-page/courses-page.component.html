@@ -7,13 +7,14 @@
       (cancelDeleteCourse)="toggleModal()">
     </app-delete-course-modal-content>
   </app-modal>
-  <button class="add-button sharp-button">
+  <button class="add-button sharp-button" (click)="addCourse()">
     <fa-icon icon="plus"></fa-icon>
     Add Course
   </button>
   <app-courses-list
     [coursesList]="coursesList"
     [searchQuery]="searchQuery"
+    (editCourse)="editCourse($event)"
     (deleteCourse)="showDeleteCourseModal($event)">
   </app-courses-list>
 </div>

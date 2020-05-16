@@ -20,7 +20,7 @@
     <p class="description">{{course.description}}</p>
   </div>
   <div class="controls">
-    <button class="button default-button">
+    <button class="button default-button" (click)="editCourse.emit(course.id)">
       <fa-icon icon="pencil-alt"></fa-icon>
       Edit
     </button>

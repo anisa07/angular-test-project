@@ -9,6 +9,7 @@ import CourseInterface from '@courses/shared/interfaces/course.interface';
 export class CourseComponent {
   @Input() public course: CourseInterface;
   @Output() public deleteCourse = new EventEmitter<string>();
+  @Output() public editCourse = new EventEmitter<string>();
 
   public delete(id: string): void {
     this.deleteCourse.emit(id);
