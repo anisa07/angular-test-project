@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faClock, faCalendarAlt, faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faTrashAlt, faPencilAlt, faPlus, faSearch, faUser, faSignOutAlt, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -52,6 +53,7 @@ import { AddCoursePageComponent } from './components/add-course-page/add-course-
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
