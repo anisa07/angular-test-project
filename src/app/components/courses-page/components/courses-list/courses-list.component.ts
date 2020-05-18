@@ -17,6 +17,7 @@ export class CoursesListComponent {
   @Input() public coursesList: Array<CourseInterface> = [];
   @Input() public searchQuery: string;
   @Output() public deleteCourse = new EventEmitter<string>();
+  @Output() public editCourse = new EventEmitter<string>();
 
   constructor(private filterCoursesByQueryPipe: FilterCoursesByQueryPipe) { }
 

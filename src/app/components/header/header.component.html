@@ -1,9 +1,9 @@
 <header class="header">
   <app-logo></app-logo>
   <div>
-    <button class="user-button">
+    <button class="user-button" *ngIf="showLogout">
       <fa-icon icon="user" class="icon user"></fa-icon>
-      Login
+      {{userName}}
     </button>
     <button  class="user-button" (click)="logout()" *ngIf="showLogout">
       <fa-icon icon="sign-out-alt" class="icon sign-out"></fa-icon>

@@ -1,6 +1,8 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoursesService } from '@app/services/courses.service';
 import CourseInterface from '@courses/shared/interfaces/course.interface';
+import { Router} from '@angular/router';
+import { BreadcrumbsService } from '@app/services/breadcrumbs.service';
 
 @Component({
   selector: 'app-courses-page',
@@ -13,7 +15,7 @@ export class CoursesPageComponent implements OnInit {
   public showDeleteModal: boolean;
   private courseId: string;
 
-  constructor(private coursesService: CoursesService) {
+  constructor(private coursesService: CoursesService, private router: Router, private breadcrumbsService: BreadcrumbsService) {
   }
 
   public onSearchCourseByQuery(query: string): void {
@@ -29,6 +31,18 @@ export class CoursesPageComponent implements OnInit {
     this.coursesService.deleteCourse(this.courseId);
     this.coursesList = this.coursesService.getCourses();
     this.toggleModal();
+  }
+
+  public addCourse(): void {
+    this.breadcrumbsService.updateBreadcrumbsLink(this.breadcrumbsService.getBreadcrumbs.length - 1, '/courses');
+    this.router.navigate(['/courses/new']);
+  }
+
+  public editCourse(id: string): void {
+    this.breadcrumbsService.addBreadcrumbs({
+      name: this.coursesService.getCourseById(id).title
+    }, '/courses');
+    this.router.navigate([`/courses/${id}`]);
   }
 
   public ngOnInit(): void {

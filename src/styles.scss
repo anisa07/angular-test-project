@@ -54,4 +54,12 @@ body {
     background: $special-color;
     color: $bright-color;
   }
+
+  input, textarea {
+    padding: 10px;
+    font-size: 18px;
+    color: $dark-color;
+    border-radius: 2px;
+    height: 45px;
+  }
 }

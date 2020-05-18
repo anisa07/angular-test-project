@@ -1,4 +1,8 @@
 <div class="breadcrumbs">
-  <a class="link">Courses</a>
-  <a class="link">Course</a>
+  <a class="link"
+     *ngFor="let breadcrumb of breadcrumbsService.getBreadcrumbs;trackBy: trackByFun"
+     (click)="navigate(breadcrumb)"
+  >
+    {{ breadcrumb.name }}
+  </a>
 </div>
