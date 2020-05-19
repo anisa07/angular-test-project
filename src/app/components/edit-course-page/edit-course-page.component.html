@@ -1,7 +1,7 @@
 <div class="edit">
   <label>
     <span>Title: <span>*Required</span></span>
-    <input [(ngModel)]="course.title"/>
+    <input [(ngModel)]="course.name"/>
   </label>
   <label>
     <span>Description: <span>*Required</span></span>
@@ -9,11 +9,11 @@
   </label>
   <label>
     <span>Date: <span>*Required</span></span>
-    <input [(ngModel)]="course.creationDate" placeholder="MM.DD.YYYY"/>
+    <input [(ngModel)]="course.date" placeholder="MM.DD.YYYY"/>
   </label>
   <label>
     <span>Duration: <span>*Required</span></span>
-    <input [(ngModel)]="course.duration" placeholder="Input in minutes"/>
+    <input [(ngModel)]="course.length" placeholder="Input in minutes"/>
   </label>
   <label>
     <span>Authors: <span>*Required</span></span>

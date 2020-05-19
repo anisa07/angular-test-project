@@ -7,8 +7,11 @@ import CourseInterface from '@courses/shared/interfaces/course.interface';
 export class OrderCoursesByDatePipe implements PipeTransform {
 
   public transform(value: Array<CourseInterface>): Array<CourseInterface> {
-    return value.sort((item1, item2) =>
-      item1.creationDate.getTime() - item2.creationDate.getTime());
+    return value.sort((item1, item2) => {
+        const date1 = new Date(item1.date);
+        const date2 = new Date(item2.date);
+        return date1.getTime() - date2.getTime();
+    });
   }
 
 }

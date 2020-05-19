@@ -12,7 +12,8 @@ export class CourseBorderDirective implements OnChanges {
   }
 
   public ngOnChanges(): void {
-    const courseDate = this.creationDate.getTime();
+    const date = new Date(this.creationDate);
+    const courseDate = date.getTime();
     const currentDate = Date.now();
     if (courseDate < currentDate && courseDate >= currentDate - MILLISECONDS_IN_14_DAYS) {
       this.element.nativeElement.style.boxShadow = '10px 10px 10px #32cd32';

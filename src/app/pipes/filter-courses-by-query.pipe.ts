@@ -10,6 +10,6 @@ export class FilterCoursesByQueryPipe implements PipeTransform {
     if (!searchQuery) {
       return value;
     }
-    return value.filter(course => course.title.toLowerCase().includes(searchQuery.trim().toLowerCase()));
+    return value.filter(course => course.name.toLowerCase().includes(searchQuery.trim().toLowerCase()));
   }
 }

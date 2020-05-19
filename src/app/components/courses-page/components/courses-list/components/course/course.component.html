@@ -1,7 +1,7 @@
 <div class="course" [ngClass]="{'top-rated': course.topRated}" [appCourseBorder]="course.creationDate">
   <div class="content">
     <div class="title">
-      <h3 class="text">{{course.title | uppercase}}
+      <h3 class="text">{{course.name | uppercase}}
         <span>
           <fa-icon icon="star" *ngIf="course.topRated"></fa-icon>
         </span>
@@ -9,11 +9,11 @@
       <div class="date">
         <p>
           <fa-icon [icon]="['far', 'clock']"></fa-icon>
-          {{course.duration | convertCourseDuration}}
+          {{course.length | convertCourseDuration}}
         </p>
         <p>
           <fa-icon [icon]="['far', 'calendar-alt']"></fa-icon>
-          {{course.creationDate | date}}
+          {{course.date | date}}
         </p>
       </div>
     </div>

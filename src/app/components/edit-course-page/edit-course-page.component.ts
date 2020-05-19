@@ -24,7 +24,7 @@ export class EditCoursePageComponent implements OnInit {
   }
 
   public updateCourse(): void {
-    this.course.creationDate = new Date(this.course.creationDate);
+    this.course.date = new Date(this.course.date);
     this.coursesService.updateCourse(this.course);
     this.router.navigate(['/courses']);
     this.breadcrumbsService.removeBreadcrumbs('Courses');
