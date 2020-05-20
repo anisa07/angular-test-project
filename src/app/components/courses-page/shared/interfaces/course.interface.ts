@@ -1,8 +1,11 @@
+import AuthorInterface from './author.interface';
+
 export default interface CourseInterface {
   id: string;
-  creationDate: Date;
-  duration: number;
+  date: Date;
+  length: number;
   description: string;
-  title: string;
+  name: string;
   topRated: boolean;
+  authors: Array<AuthorInterface>;
 }

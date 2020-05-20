@@ -13,13 +13,22 @@ export class CoursesPageComponent implements OnInit {
   public coursesList: Array<CourseInterface> = [];
   public searchQuery: string;
   public showDeleteModal: boolean;
+  public showLoadMore = true;
   private courseId: string;
+  private currentPage = 0;
 
   constructor(private coursesService: CoursesService, private router: Router, private breadcrumbsService: BreadcrumbsService) {
   }
 
   public onSearchCourseByQuery(query: string): void {
-    this.searchQuery = query;
+    if (this.searchQuery !== query) {
+      this.coursesList = [];
+      this.searchQuery = query;
+      this.currentPage = 0;
+      this.showLoadMore = true;
+    }
+
+    this.loadCourses();
   }
 
   public showDeleteCourseModal(id: string): void {
@@ -29,7 +38,7 @@ export class CoursesPageComponent implements OnInit {
 
   public deleteCourseById(): void {
     this.coursesService.deleteCourse(this.courseId);
-    this.coursesList = this.coursesService.getCourses();
+    // this.coursesList = this.coursesService.getCourses();
     this.toggleModal();
   }
 
@@ -40,16 +49,30 @@ export class CoursesPageComponent implements OnInit {
 
   public editCourse(id: string): void {
     this.breadcrumbsService.addBreadcrumbs({
-      name: this.coursesService.getCourseById(id).title
+      name: this.coursesService.getCourseById(id).name
     }, '/courses');
     this.router.navigate([`/courses/${id}`]);
   }
 
+  public loadMoreCourses(): void {
+    this.loadCourses();
+  }
+
   public ngOnInit(): void {
-    this.coursesList = this.coursesService.getCourses();
+    this.loadCourses();
   }
 
   private toggleModal(): void {
     this.showDeleteModal = !this.showDeleteModal;
+  }
+
+  private loadCourses(): void {
+    if (this.showLoadMore) {
+      this.coursesService.loadCourses(this.currentPage, this.searchQuery).subscribe(coursesData => {
+        this.currentPage++;
+        this.coursesList = [...this.coursesList, ...coursesData.courses];
+        this.showLoadMore = this.coursesList.length !== coursesData.allLength;
+      });
+    }
   }
 }

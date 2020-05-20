@@ -12,9 +12,10 @@
     Add Course
   </button>
   <app-courses-list
+    [showLoadMore]="showLoadMore"
     [coursesList]="coursesList"
-    [searchQuery]="searchQuery"
     (editCourse)="editCourse($event)"
-    (deleteCourse)="showDeleteCourseModal($event)">
+    (deleteCourse)="showDeleteCourseModal($event)"
+    (loadMore)="loadMoreCourses()">
   </app-courses-list>
 </div>

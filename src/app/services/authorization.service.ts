@@ -1,15 +1,18 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import UserInterface from '@login/shared/interfaces/user.interface';
+import { apiURL } from '../../config';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorizationService {
+export class AuthorizationService implements OnDestroy {
   public isAuthenticated: BehaviorSubject<boolean>;
+  private loginSubscription: Subscription;
   private authKey = '__save_fake_user_and_token';
 
-  constructor() {
+  constructor(private http: HttpClient) {
     const authInfo = sessionStorage.getItem(this.authKey);
     this.isAuthenticated = new BehaviorSubject<boolean>(!!(authInfo && JSON.parse(authInfo).token));
   }
@@ -23,11 +26,13 @@ export class AuthorizationService {
   }
 
   public login(credentials: UserInterface): void {
-    sessionStorage.setItem(this.authKey, JSON.stringify({
-      userName: credentials.userName,
-      token: 'token'
-    }));
-    this.setAuthState(true);
+    this.loginSubscription = this.http.post(`${apiURL}/auth/login`, credentials).subscribe((data: { token: string }) => {
+      sessionStorage.setItem(this.authKey, JSON.stringify({
+        userName: credentials.userName,
+        token: data.token
+      }));
+      this.setAuthState(true);
+    });
   }
 
   public logout(): void {
@@ -38,5 +43,11 @@ export class AuthorizationService {
   public getUserInfo(): UserInterface {
     const authInfo = sessionStorage.getItem(this.authKey);
     return authInfo && JSON.parse(authInfo);
+  }
+
+  public ngOnDestroy(): void {
+    if (this.loginSubscription) {
+      this.loginSubscription.unsubscribe();
+    }
   }
 }
